@@ -40,7 +40,7 @@ function metricObject(metric) {
 
 function createDocuments(data) {
   const techDocs = data.techStackItems.map((item) => ({
-    _id: `techStackItem.${item.slug}`,
+    _id: `techStackItem-${item.slug}`,
     _type: "techStackItem",
     name: item.name,
     slug: { _type: "slug", current: item.slug },
@@ -49,7 +49,7 @@ function createDocuments(data) {
   }));
 
   const projectDocs = data.projects.map((project) => ({
-    _id: `project.${project.slug}`,
+    _id: `project-${project.slug}`,
     _type: "project",
     title: project.title,
     slug: { _type: "slug", current: project.slug },
@@ -60,7 +60,7 @@ function createDocuments(data) {
     featured: project.featured,
     year: project.year,
     status: project.status,
-    techStack: project.techStack.map((slug) => toReference(`techStackItem.${slug}`)),
+    techStack: project.techStack.map((slug) => toReference(`techStackItem-${slug}`)),
     role: project.role,
     teamSize: project.teamSize,
     problemStatement: project.problem,
@@ -120,10 +120,24 @@ function createDocuments(data) {
 
 const documents = createDocuments(seed);
 
+const legacyDocumentIds = [
+  ...seed.techStackItems.map((item) => `techStackItem.${item.slug}`),
+  ...seed.projects.map((project) => `project.${project.slug}`)
+];
+
 if (dryRun) {
   console.log(`Prepared ${documents.length} documents for seeding.`);
   console.log(documents.map((document) => `${document._type}: ${document._id}`).join("\n"));
   process.exit(0);
+}
+
+for (const documentId of legacyDocumentIds) {
+  try {
+    await client.delete(documentId);
+    console.log(`Deleted legacy document: ${documentId}`);
+  } catch {
+    // Ignore missing legacy docs.
+  }
 }
 
 for (const document of documents) {
