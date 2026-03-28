@@ -18,14 +18,18 @@ const config: Config = {
         muted: "rgb(var(--muted) / <alpha-value>)",
         "muted-foreground": "rgb(var(--muted-foreground) / <alpha-value>)",
         accent: "rgb(var(--accent) / <alpha-value>)",
-        "accent-foreground": "rgb(var(--accent-foreground) / <alpha-value>)"
+        "accent-foreground": "rgb(var(--accent-foreground) / <alpha-value>)",
+        "accent-soft": "rgb(var(--accent-soft) / <alpha-value>)",
+        red: "rgb(var(--red) / <alpha-value>)",
+        green: "rgb(var(--green) / <alpha-value>)"
       },
       boxShadow: {
-        soft: "0 18px 60px -26px rgba(15, 23, 42, 0.18)"
+        soft: "0 12px 32px -18px rgba(44, 47, 48, 0.08)",
+        ambient: "0 12px 32px rgba(44, 47, 48, 0.06)"
       },
       borderRadius: {
-        xl: "1.25rem",
-        "2xl": "1.75rem"
+        lg: "1rem",
+        xl: "1.5rem"
       },
       maxWidth: {
         content: "78rem",

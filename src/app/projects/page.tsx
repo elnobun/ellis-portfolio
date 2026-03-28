@@ -16,12 +16,16 @@ export default async function ProjectsPage() {
   const projects = await getProjects();
 
   return (
-    <Section className="pt-16 sm:pt-20">
-      <Container className="space-y-10">
-        <div className="max-w-3xl space-y-4">
-          <p className="text-sm uppercase tracking-[0.18em] text-muted-foreground">Projects</p>
-          <h1 className="text-4xl font-medium tracking-[-0.04em] text-foreground sm:text-5xl">Work that is designed to be easy to browse and strong enough to read deeply.</h1>
-          <p className="text-lg leading-8 text-muted-foreground">Filter by project type and engagement, search by stack or title, and move into detailed case studies when something looks relevant.</p>
+    <Section className="pt-24 sm:pt-28">
+      <Container className="space-y-20">
+        <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-3xl space-y-6">
+            <h1 className="text-5xl font-extrabold tracking-[-0.05em] text-foreground sm:text-6xl">Engineered Artifacts</h1>
+            <p className="text-xl leading-relaxed text-muted-foreground">A curated gallery of technical solutions, ranging from distributed systems to pixel-perfect front-end architectures. Each project represents a specific challenge overcome through precision and craft.</p>
+          </div>
+          <div className="rounded-lg bg-elevated px-4 py-2 text-sm font-semibold text-muted-foreground">
+            <span className="mr-2 inline-block h-2 w-2 rounded-full bg-green" />12 Active Lab Projects
+          </div>
         </div>
         <ProjectsList projects={projects} />
       </Container>

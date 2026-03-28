@@ -4,28 +4,34 @@
 
 :root {
   color-scheme: light;
-  --background: 246 243 238;
-  --surface: 255 252 248;
-  --elevated: 250 247 241;
-  --foreground: 25 29 33;
-  --muted: 236 232 225;
-  --muted-foreground: 98 107 118;
-  --border: 214 209 201;
-  --accent: 34 120 84;
-  --accent-foreground: 247 250 247;
+  --background: 245 246 247;
+  --surface: 245 246 247;
+  --elevated: 239 241 242;
+  --foreground: 44 47 48;
+  --muted: 218 221 223;
+  --muted-foreground: 92 98 102;
+  --border: 171 173 174;
+  --accent: 0 88 188;
+  --accent-foreground: 255 255 255;
+  --accent-soft: 109 159 255;
+  --red: 180 26 20;
+  --green: 19 115 51;
 }
 
 .dark {
   color-scheme: dark;
-  --background: 18 23 29;
-  --surface: 24 31 38;
-  --elevated: 29 36 44;
-  --foreground: 237 242 246;
-  --muted: 38 46 55;
-  --muted-foreground: 162 173 185;
-  --border: 58 69 80;
-  --accent: 95 204 158;
-  --accent-foreground: 10 22 18;
+  --background: 19 23 28;
+  --surface: 19 23 28;
+  --elevated: 31 36 41;
+  --foreground: 230 234 237;
+  --muted: 45 50 56;
+  --muted-foreground: 164 170 176;
+  --border: 171 173 174;
+  --accent: 109 159 255;
+  --accent-foreground: 14 18 24;
+  --accent-soft: 0 88 188;
+  --red: 233 98 89;
+  --green: 129 201 149;
 }
 
 * {
@@ -38,10 +44,12 @@ html {
 
 body {
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top, rgb(var(--surface) / 1), transparent 36%),
-    linear-gradient(180deg, rgb(var(--background) / 1), rgb(var(--background) / 1));
+  font-family: var(--font-sans), sans-serif;
+  background: rgb(var(--background) / 1);
   color: rgb(var(--foreground) / 1);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
 }
 
 ::selection {
@@ -50,6 +58,41 @@ body {
 
 a {
   text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgb(var(--muted-foreground) / 1);
+}
+
+.ghost-outline {
+  outline: 1px solid rgb(var(--border) / 0.15);
+}
+
+@keyframes scrollPulse {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.45;
+  }
+  50% {
+    transform: translateY(6px);
+    opacity: 0.95;
+  }
+}
+
+.scroll-pulse {
+  animation: scrollPulse 1.8s ease-in-out infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
