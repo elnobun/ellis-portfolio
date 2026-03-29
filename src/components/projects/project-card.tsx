@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
+import { AccentText, stripAccentMarkup } from "@/components/ui/accent-text";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/types";
@@ -43,7 +44,7 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
       <div className={cn("relative overflow-hidden", featured ? "min-h-[24rem] lg:min-h-[26rem]" : "min-h-72")}>
         <Image
           src={project.featuredImage}
-          alt={project.title}
+          alt={stripAccentMarkup(project.title)}
           fill
           className="object-cover transition duration-500 group-hover:scale-[1.03]"
           sizes={featured ? "(min-width: 1024px) 55vw, 100vw" : "(min-width: 1024px) 33vw, 100vw"}
@@ -60,7 +61,7 @@ export function ProjectCard({ project, featured = false }: ProjectCardProps) {
           <div className="space-y-3.5">
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
               <div className="space-y-2">
-                <h3 className={cn("font-semibold tracking-[-0.03em] text-foreground", featured ? "text-[2rem] md:text-[2.35rem]" : "text-[1.55rem]")}>{project.title}</h3>
+                <h3 className={cn("font-semibold tracking-[-0.03em] text-foreground", featured ? "text-[2rem] md:text-[2.35rem]" : "text-[1.55rem]")}><AccentText text={project.title} accentClassName="text-accent italic" /></h3>
                 <p className="eyebrow">{project.role}</p>
               </div>
               <span className="rounded-full border border-border/20 bg-elevated px-3 py-1 text-xs font-semibold uppercase tracking-[0.05em] text-muted-foreground">{project.year}</span>

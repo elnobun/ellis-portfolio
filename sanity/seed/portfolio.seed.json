@@ -3,8 +3,27 @@
     "siteTitle": "Ellis Portfolio",
     "defaultSeoTitle": "Ellis | Front-end Engineer",
     "defaultSeoDescription": "A modern portfolio and case-study platform for a front-end engineer focused on careful UI, strong systems, and measurable product outcomes.",
+    "availabilityLabel": "Available for New Projects",
+    "scrollLabel": "Scroll",
     "heroHeadline": "Front-end systems, thoughtful interfaces, and case studies that explain the work.",
     "heroSupportingText": "I design and build performant product experiences with a calm visual language, strong accessibility, and engineering decisions that hold up as products grow.",
+    "selectedWorkHeading": "Curated Artifacts",
+    "selectedWorkDescription": "A selection of recent engineering challenges solved through thoughtful architecture and elegant interfaces.",
+    "selectedWorkCtaHeading": "Looking for a technical partner?",
+    "selectedWorkCtaDescription": "I specialize in bridging the gap between complex engineering requirements and intuitive user experiences. Let&apos;s build something precise.",
+    "selectedWorkMetricOneLabel": "Uptime delivery",
+    "selectedWorkMetricTwoLabel": "Deployed systems",
+    "toolsEyebrow": "Technical Proficiency",
+    "toolsHeading": "Tools of the Trade",
+    "toolsDescription": "A practical toolkit for systems thinking, product delivery, and polished interfaces.",
+    "tools": [
+      { "label": "TypeScript", "icon": "terminal" },
+      { "label": "PostgreSQL", "icon": "database" },
+      { "label": "Google Cloud", "icon": "cloud" },
+      { "label": "System Design", "icon": "workflow" },
+      { "label": "Motion UI", "icon": "sparkles" },
+      { "label": "Next.js", "icon": "layers" }
+    ],
     "footerText": "Built with Next.js, Tailwind, Framer Motion, and Sanity-ready content architecture.",
     "contactEmail": "hello@ellis.dev",
     "credibilityItems": ["Accessible UI", "Performance minded", "Design systems", "Case-study driven"],
@@ -15,6 +34,8 @@
     ]
   },
   "aboutPage": {
+    "heading": "Engineering digital <accent>artifacts</accent> with human intent.",
+    "introLabel": "Introduction",
     "intro": "I am a front-end engineer focused on the seam between product thinking, interface clarity, and implementation detail.",
     "story": [
       "My work leans toward product environments where design quality, performance, and maintainability all matter at once.",
@@ -27,14 +48,70 @@
       "Accessibility and performance are product quality, not cleanup work.",
       "Visual restraint usually ages better than trend chasing."
     ],
-    "toolkit": ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Sanity", "Vercel", "Storybook", "Figma"]
+    "toolkit": ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Sanity", "Vercel", "Storybook", "Figma"],
+    "spotlightTitle": "Currently Building",
+    "spotlightSubtitle": "Distributed Systems",
+    "arsenalHeading": "Technical Arsenal",
+    "arsenalDescription": "Selected technologies I leverage to solve complex problems.",
+    "languagesTitle": "Languages",
+    "frameworksTitle": "Frameworks",
+    "infrastructureTitle": "Infrastructure",
+    "infrastructureSummary": "AWS, Terraform, Kubernetes, Docker",
+    "careerHeading": "Career Journey",
+    "careerDescription": "A narrative of professional growth and technical leadership.",
+    "timeline": [
+      {
+        "years": "2021 - Present",
+        "title": "Lead Systems Architect",
+        "company": "Global FinTech Solutions",
+        "summary": "Orchestrating the migration of legacy monolithic architectures to microservices. Led a team of 12 engineers to deliver a high-throughput trading engine processing 50k+ requests per second with sub-10ms latency.",
+        "tags": ["Distributed Systems", "Go", "Leadership"],
+        "active": true
+      },
+      {
+        "years": "2018 - 2021",
+        "title": "Senior Frontend Engineer",
+        "company": "Creative Digital Agency",
+        "summary": "Developed bespoke design systems for Fortune 500 clients. Specialized in complex data visualization and accessible UI frameworks.",
+        "tags": ["React", "TypeScript", "D3.js"],
+        "active": false
+      },
+      {
+        "years": "2016 - 2018",
+        "title": "Full Stack Developer",
+        "company": "E-Commerce Startup",
+        "summary": "Founding engineer responsible for the entire MVP cycle. Scaled the platform from 0 to 100k active monthly users.",
+        "tags": [],
+        "active": false
+      }
+    ],
+    "ctaHeading": "Let&apos;s build something significant.",
+    "ctaDescription": "Currently open to technical advisory roles and collaborative architectural challenges.",
+    "ctaPrimaryLabel": "Get In Touch",
+    "ctaSecondaryLabel": "View Projects"
   },
   "contactPage": {
     "heading": "Let us talk about product UI, front-end systems, or a portfolio-worthy rebuild.",
     "supportingText": "If you are building a product that needs clearer UX, stronger front-end architecture, or sharper presentation, I would be glad to hear about it.",
+    "eyebrowLabel": "Start a conversation",
+    "panelHeading": "Tell me about the product, team, and problem space.",
+    "panelBody": "Share as much or as little detail as you like. I am especially interested in front-end systems, product UI, platform rebuilds, and CMS-backed experiences.",
+    "bestForTitle": "Best for",
+    "bestForBody": "Portfolio rebuilds, design systems, performance improvements, and product UX refinements.",
+    "responseTitle": "Typical response time",
+    "responseBody": "Within 1-2 business days.",
+    "nameLabel": "Full Name",
+    "emailLabel": "Email Address",
+    "messageLabel": "Your Message",
+    "submitLabel": "Send Message",
     "email": "hello@ellis.dev",
     "linkedIn": "https://linkedin.com/in/ellis",
     "github": "https://github.com/ellis"
+  },
+  "projectsPage": {
+    "heading": "Engineered Artifacts",
+    "supportingText": "A curated gallery of technical solutions, ranging from distributed systems to pixel-perfect front-end architectures. Each project represents a specific challenge overcome through precision and craft.",
+    "badgeText": "12 Active Lab Projects"
   },
   "techStackItems": [
     { "name": "Next.js", "slug": "nextjs", "category": "Framework", "sortOrder": 1 },

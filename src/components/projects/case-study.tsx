@@ -2,6 +2,7 @@ import { ArrowRight, ArrowUpRight, Boxes, FolderKanban, GalleryVerticalEnd } fro
 import Image from "next/image";
 import Link from "next/link";
 
+import { AccentText, stripAccentMarkup } from "@/components/ui/accent-text";
 import { Badge } from "@/components/ui/badge";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -60,13 +61,13 @@ export function CaseStudy({ project, nextProject }: CaseStudyProps) {
               <Badge>{project.year}</Badge>
             </div>
             <div className="max-w-4xl space-y-3">
-              <h1 className="text-4xl font-semibold tracking-[-0.04em] text-foreground sm:text-5xl lg:text-[3.8rem] lg:leading-[1.02]">{project.title}</h1>
+              <h1 className="text-4xl font-semibold tracking-[-0.04em] text-foreground sm:text-5xl lg:text-[3.8rem] lg:leading-[1.02]"><AccentText text={project.title} accentClassName="text-accent italic" /></h1>
               <p className="max-w-3xl text-[1.05rem] leading-8 text-muted-foreground">{project.description}</p>
             </div>
           </div>
           <div className="grid gap-6 lg:grid-cols-[minmax(0,1.4fr)_minmax(18rem,0.6fr)]">
             <div className="relative min-h-[24rem] overflow-hidden rounded-lg border border-border/20 bg-surface shadow-soft">
-              <Image src={project.featuredImage} alt={project.title} fill className="object-cover" sizes="100vw" priority />
+              <Image src={project.featuredImage} alt={stripAccentMarkup(project.title)} fill className="object-cover" sizes="100vw" priority />
             </div>
             <aside className="rounded-lg border border-border/20 bg-elevated p-6 shadow-soft sm:p-7">
               <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-1">
@@ -143,7 +144,7 @@ export function CaseStudy({ project, nextProject }: CaseStudyProps) {
           <div className="grid gap-6 md:grid-cols-2">
             {project.gallery.map((image, index) => (
               <div key={`${image}-${index}`} className="relative min-h-80 overflow-hidden rounded-lg border border-border/20 bg-surface shadow-soft">
-                <Image src={image} alt={`${project.title} screen ${index + 1}`} fill className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
+                <Image src={image} alt={`${stripAccentMarkup(project.title)} screen ${index + 1}`} fill className="object-cover" sizes="(min-width: 768px) 50vw, 100vw" />
               </div>
             ))}
           </div>
@@ -158,7 +159,7 @@ export function CaseStudy({ project, nextProject }: CaseStudyProps) {
               className="flex flex-col gap-3 rounded-lg border border-border/20 bg-surface p-6 shadow-soft transition hover:shadow-ambient"
             >
               <p className="eyebrow inline-flex items-center gap-2"><Boxes className="h-3.5 w-3.5" />Next project</p>
-              <h2 className="text-3xl font-semibold tracking-[-0.05em] text-foreground">{nextProject.title}</h2>
+              <h2 className="text-3xl font-semibold tracking-[-0.05em] text-foreground"><AccentText text={nextProject.title} accentClassName="text-accent italic" /></h2>
               <p className="max-w-2xl text-muted-foreground">{nextProject.summary}</p>
               <span className="inline-flex items-center gap-2 text-sm font-semibold text-accent">Open next case study<ArrowRight className="h-4 w-4" /></span>
             </Link>

@@ -8,6 +8,10 @@ import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { Container } from "@/components/ui/container";
 import type { NavItem } from "@/types";
 
+type HeaderProps = {
+  contactEmail: string;
+};
+
 const navItems: NavItem[] = [
   { href: "/", label: "Home" },
   { href: "/projects", label: "Projects" },
@@ -15,7 +19,7 @@ const navItems: NavItem[] = [
   { href: "/contact", label: "Contact" }
 ];
 
-export function Header() {
+export function Header({ contactEmail }: HeaderProps) {
   const pathname = usePathname();
 
   return (
@@ -41,7 +45,7 @@ export function Header() {
           </nav>
           <div className="flex items-center gap-3">
             <Link
-              href="mailto:hello@ellis.dev"
+              href={`mailto:${contactEmail}`}
               className="hidden items-center gap-2 rounded-full bg-surface px-4 py-2 text-sm font-semibold text-foreground transition hover:bg-elevated sm:inline-flex"
             >
               Start a conversation

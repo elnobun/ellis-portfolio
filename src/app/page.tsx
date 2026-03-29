@@ -11,8 +11,8 @@ export default async function HomePage() {
     <>
       <WebsiteJsonLd settings={settings} />
       <Hero settings={settings} />
-      <SelectedWork projects={featuredProjects} />
-      <ToolsOfTrade />
+      <SelectedWork projects={featuredProjects} settings={settings} />
+      <ToolsOfTrade settings={settings} />
     </>
   );
 }

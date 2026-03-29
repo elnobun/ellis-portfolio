@@ -20,8 +20,60 @@ export const siteSettingsType = defineType({
       type: "string",
       validation: (rule) => rule.email()
     }),
-    defineField({ name: "heroHeadline", title: "Hero headline", type: "string" }),
+    defineField({
+      name: "heroHeadline",
+      title: "Hero headline",
+      type: "string",
+      description: "Use <accent>highlighted words</accent> to style part of the heading."
+    }),
     defineField({ name: "heroSupportingText", title: "Hero supporting text", type: "text" }),
+    defineField({ name: "availabilityLabel", title: "Availability label", type: "string" }),
+    defineField({ name: "scrollLabel", title: "Scroll label", type: "string" }),
+    defineField({
+      name: "selectedWorkHeading",
+      title: "Selected work heading",
+      type: "string",
+      description: "Use <accent>highlighted words</accent> to style part of the heading."
+    }),
+    defineField({ name: "selectedWorkDescription", title: "Selected work description", type: "text" }),
+    defineField({
+      name: "selectedWorkCtaHeading",
+      title: "Selected work CTA heading",
+      type: "string",
+      description: "Use <accent>highlighted words</accent> to style part of the heading."
+    }),
+    defineField({ name: "selectedWorkCtaDescription", title: "Selected work CTA description", type: "text" }),
+    defineField({ name: "selectedWorkMetricOneLabel", title: "Selected work metric one label", type: "string" }),
+    defineField({ name: "selectedWorkMetricTwoLabel", title: "Selected work metric two label", type: "string" }),
+    defineField({ name: "toolsEyebrow", title: "Tools eyebrow", type: "string" }),
+    defineField({
+      name: "toolsHeading",
+      title: "Tools heading",
+      type: "string",
+      description: "Use <accent>highlighted words</accent> to style part of the heading."
+    }),
+    defineField({ name: "toolsDescription", title: "Tools description", type: "text" }),
+    defineField({
+      name: "tools",
+      title: "Tools",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "object",
+          fields: [
+            defineField({ name: "label", title: "Label", type: "string" }),
+            defineField({
+              name: "icon",
+              title: "Icon key",
+              type: "string",
+              options: {
+                list: ["terminal", "database", "cloud", "workflow", "sparkles", "layers"]
+              }
+            })
+          ]
+        })
+      ]
+    }),
     defineField({ name: "credibilityItems", title: "Credibility items", type: "array", of: [defineArrayMember({ type: "string" })] }),
     defineField({
       name: "socialLinks",

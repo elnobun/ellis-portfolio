@@ -1,15 +1,16 @@
-import { aboutContent, contactContent, projects, siteSettings } from "@/lib/data/site-content";
+import { aboutContent, contactContent, projects, projectsPageContent, siteSettings } from "@/lib/data/site-content";
 import { sanityClient, sanityEnabled } from "@/lib/sanity/client";
-import { mapAboutContent, mapContactContent, mapProject, mapSiteSettings } from "@/lib/sanity/mappers";
+import { mapAboutContent, mapContactContent, mapProject, mapProjectsPageContent, mapSiteSettings } from "@/lib/sanity/mappers";
 import {
   aboutPageQuery,
   allProjectsQuery,
   contactPageQuery,
   featuredProjectsQuery,
   projectBySlugQuery,
+  projectsPageQuery,
   siteSettingsQuery
 } from "@/lib/sanity/queries";
-import type { AboutContent, ContactContent, Project, SiteSettings } from "@/types";
+import type { AboutContent, ContactContent, Project, ProjectsPageContent, SiteSettings } from "@/types";
 
 export async function getSiteSettings(): Promise<SiteSettings> {
   if (sanityEnabled && sanityClient) {
@@ -22,8 +23,20 @@ export async function getSiteSettings(): Promise<SiteSettings> {
         siteTitle: mappedSettings.siteTitle || siteSettings.siteTitle,
         defaultSeoTitle: mappedSettings.defaultSeoTitle || siteSettings.defaultSeoTitle,
         defaultSeoDescription: mappedSettings.defaultSeoDescription || siteSettings.defaultSeoDescription,
+        availabilityLabel: mappedSettings.availabilityLabel || siteSettings.availabilityLabel,
+        scrollLabel: mappedSettings.scrollLabel || siteSettings.scrollLabel,
         heroHeadline: mappedSettings.heroHeadline || siteSettings.heroHeadline,
         heroSupportingText: mappedSettings.heroSupportingText || siteSettings.heroSupportingText,
+        selectedWorkHeading: mappedSettings.selectedWorkHeading || siteSettings.selectedWorkHeading,
+        selectedWorkDescription: mappedSettings.selectedWorkDescription || siteSettings.selectedWorkDescription,
+        selectedWorkCtaHeading: mappedSettings.selectedWorkCtaHeading || siteSettings.selectedWorkCtaHeading,
+        selectedWorkCtaDescription: mappedSettings.selectedWorkCtaDescription || siteSettings.selectedWorkCtaDescription,
+        selectedWorkMetricOneLabel: mappedSettings.selectedWorkMetricOneLabel || siteSettings.selectedWorkMetricOneLabel,
+        selectedWorkMetricTwoLabel: mappedSettings.selectedWorkMetricTwoLabel || siteSettings.selectedWorkMetricTwoLabel,
+        toolsEyebrow: mappedSettings.toolsEyebrow || siteSettings.toolsEyebrow,
+        toolsHeading: mappedSettings.toolsHeading || siteSettings.toolsHeading,
+        toolsDescription: mappedSettings.toolsDescription || siteSettings.toolsDescription,
+        tools: mappedSettings.tools.length ? mappedSettings.tools : siteSettings.tools,
         footerText: mappedSettings.footerText || siteSettings.footerText,
         contactEmail: mappedSettings.contactEmail || siteSettings.contactEmail,
         socialLinks: mappedSettings.socialLinks.length ? mappedSettings.socialLinks : siteSettings.socialLinks,
@@ -45,10 +58,28 @@ export async function getAboutContent(): Promise<AboutContent> {
 
       return {
         ...aboutContent,
+        heading: mappedContent.heading || aboutContent.heading,
+        introLabel: mappedContent.introLabel || aboutContent.introLabel,
         intro: mappedContent.intro || aboutContent.intro,
         story: mappedContent.story.length ? mappedContent.story : aboutContent.story,
         principles: mappedContent.principles.length ? mappedContent.principles : aboutContent.principles,
-        toolkit: mappedContent.toolkit.length ? mappedContent.toolkit : aboutContent.toolkit
+        toolkit: mappedContent.toolkit.length ? mappedContent.toolkit : aboutContent.toolkit,
+        portrait: mappedContent.portrait || aboutContent.portrait,
+        spotlightTitle: mappedContent.spotlightTitle || aboutContent.spotlightTitle,
+        spotlightSubtitle: mappedContent.spotlightSubtitle || aboutContent.spotlightSubtitle,
+        arsenalHeading: mappedContent.arsenalHeading || aboutContent.arsenalHeading,
+        arsenalDescription: mappedContent.arsenalDescription || aboutContent.arsenalDescription,
+        languagesTitle: mappedContent.languagesTitle || aboutContent.languagesTitle,
+        frameworksTitle: mappedContent.frameworksTitle || aboutContent.frameworksTitle,
+        infrastructureTitle: mappedContent.infrastructureTitle || aboutContent.infrastructureTitle,
+        infrastructureSummary: mappedContent.infrastructureSummary || aboutContent.infrastructureSummary,
+        careerHeading: mappedContent.careerHeading || aboutContent.careerHeading,
+        careerDescription: mappedContent.careerDescription || aboutContent.careerDescription,
+        timeline: mappedContent.timeline.length ? mappedContent.timeline : aboutContent.timeline,
+        ctaHeading: mappedContent.ctaHeading || aboutContent.ctaHeading,
+        ctaDescription: mappedContent.ctaDescription || aboutContent.ctaDescription,
+        ctaPrimaryLabel: mappedContent.ctaPrimaryLabel || aboutContent.ctaPrimaryLabel,
+        ctaSecondaryLabel: mappedContent.ctaSecondaryLabel || aboutContent.ctaSecondaryLabel
       };
     }
   }
@@ -66,6 +97,17 @@ export async function getContactContent(): Promise<ContactContent> {
         ...contactContent,
         heading: mappedContent.heading || contactContent.heading,
         supportingText: mappedContent.supportingText || contactContent.supportingText,
+        eyebrowLabel: mappedContent.eyebrowLabel || contactContent.eyebrowLabel,
+        panelHeading: mappedContent.panelHeading || contactContent.panelHeading,
+        panelBody: mappedContent.panelBody || contactContent.panelBody,
+        bestForTitle: mappedContent.bestForTitle || contactContent.bestForTitle,
+        bestForBody: mappedContent.bestForBody || contactContent.bestForBody,
+        responseTitle: mappedContent.responseTitle || contactContent.responseTitle,
+        responseBody: mappedContent.responseBody || contactContent.responseBody,
+        nameLabel: mappedContent.nameLabel || contactContent.nameLabel,
+        emailLabel: mappedContent.emailLabel || contactContent.emailLabel,
+        messageLabel: mappedContent.messageLabel || contactContent.messageLabel,
+        submitLabel: mappedContent.submitLabel || contactContent.submitLabel,
         email: mappedContent.email || contactContent.email,
         linkedIn: mappedContent.linkedIn || contactContent.linkedIn,
         github: mappedContent.github || contactContent.github
@@ -92,6 +134,23 @@ export async function getProjects(): Promise<Project[]> {
 
   const data = await sanityClient.fetch<Record<string, unknown>[]>(allProjectsQuery);
   return data.map(mapProject);
+}
+
+export async function getProjectsPageContent(): Promise<ProjectsPageContent> {
+  if (sanityEnabled && sanityClient) {
+    const data = await sanityClient.fetch<Record<string, unknown> | null>(projectsPageQuery);
+    if (data) {
+      const mappedContent = mapProjectsPageContent(data);
+
+      return {
+        heading: mappedContent.heading || projectsPageContent.heading,
+        supportingText: mappedContent.supportingText || projectsPageContent.supportingText,
+        badgeText: mappedContent.badgeText || projectsPageContent.badgeText
+      };
+    }
+  }
+
+  return projectsPageContent;
 }
 
 export async function getProjectBySlug(slug: string): Promise<Project | null> {

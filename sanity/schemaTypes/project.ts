@@ -5,7 +5,13 @@ export const projectType = defineType({
   title: "Project",
   type: "document",
   fields: [
-    defineField({ name: "title", title: "Title", type: "string", validation: (rule) => rule.required() }),
+    defineField({
+      name: "title",
+      title: "Title",
+      type: "string",
+      description: "Use <accent>highlighted words</accent> to style part of the title.",
+      validation: (rule) => rule.required()
+    }),
     defineField({ name: "slug", title: "Slug", type: "slug", options: { source: "title" }, validation: (rule) => rule.required() }),
     defineField({ name: "shortSummary", title: "Short summary", type: "text", rows: 3 }),
     defineField({ name: "fullDescription", title: "Full description", type: "text", rows: 5 }),

@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 
 import { CaseStudy } from "@/components/projects/case-study";
 import { ProjectJsonLd } from "@/components/seo/structured-data";
+import { stripAccentMarkup } from "@/components/ui/accent-text";
 import { getProjectBySlug, getProjects } from "@/lib/sanity/api";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -28,7 +29,7 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
   }
 
   return buildMetadata({
-    title: project.seoTitle || `${project.title} | Ellis`,
+    title: project.seoTitle || `${stripAccentMarkup(project.title)} | Ellis`,
     description: project.seoDescription || project.summary,
     path: `/projects/${project.slug}`
   });

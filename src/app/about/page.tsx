@@ -2,6 +2,7 @@ import { Blocks, Cloud, Code2, Layers3 } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
 
+import { AccentText } from "@/components/ui/accent-text";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
@@ -14,34 +15,6 @@ export const metadata: Metadata = buildMetadata({
   path: "/about"
 });
 
-const timeline = [
-  {
-    years: "2021 - Present",
-    title: "Lead Systems Architect",
-    company: "Global FinTech Solutions",
-    summary:
-      "Orchestrating the migration of legacy monolithic architectures to microservices. Led a team of 12 engineers to deliver a high-throughput trading engine processing 50k+ requests per second with sub-10ms latency.",
-    tags: ["Distributed Systems", "Go", "Leadership"],
-    active: true
-  },
-  {
-    years: "2018 - 2021",
-    title: "Senior Frontend Engineer",
-    company: "Creative Digital Agency",
-    summary:
-      "Developed bespoke design systems for Fortune 500 clients. Specialized in complex data visualization and accessible UI frameworks.",
-    tags: ["React", "TypeScript", "D3.js"]
-  },
-  {
-    years: "2016 - 2018",
-    title: "Full Stack Developer",
-    company: "E-Commerce Startup",
-    summary:
-      "Founding engineer responsible for the entire MVP cycle. Scaled the platform from 0 to 100k active monthly users.",
-    tags: []
-  }
-];
-
 export default async function AboutPage() {
   const content = await getAboutContent();
 
@@ -51,9 +24,9 @@ export default async function AboutPage() {
         <Container>
           <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
             <div className="lg:col-span-7">
-              <span className="inline-block rounded-lg bg-green/20 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-green">Introduction</span>
+              <span className="inline-block rounded-lg bg-green/20 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-green">{content.introLabel}</span>
               <h1 className="mt-6 text-5xl font-extrabold tracking-[-0.05em] text-foreground lg:text-7xl lg:leading-[1.05]">
-                Engineering digital <span className="text-accent">artifacts</span> with human intent.
+                <AccentText text={content.heading} accentClassName="text-accent" />
               </h1>
               <div className="mt-8 max-w-2xl space-y-5 text-[1.02rem] leading-8 text-muted-foreground">
                 <p>{content.intro}</p>
@@ -65,7 +38,7 @@ export default async function AboutPage() {
             <div className="group relative lg:col-span-5">
               <div className="aspect-square overflow-hidden rounded-lg border border-border/20 bg-elevated shadow-soft transition duration-500 group-hover:-translate-y-1">
                 <Image
-                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80"
+                  src={content.portrait || "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80"}
                   alt="Professional portrait"
                   width={1200}
                   height={1200}
@@ -78,8 +51,8 @@ export default async function AboutPage() {
                     <Code2 className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="text-sm font-bold text-foreground">Currently Building</p>
-                    <p className="text-xs text-muted-foreground">Distributed Systems</p>
+                    <p className="text-sm font-bold text-foreground">{content.spotlightTitle}</p>
+                    <p className="text-xs text-muted-foreground">{content.spotlightSubtitle}</p>
                   </div>
                 </div>
               </div>
@@ -91,14 +64,14 @@ export default async function AboutPage() {
       <Section className="bg-elevated py-18">
         <Container>
           <div className="mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground">Technical Arsenal</h2>
-            <p className="mt-2 text-muted-foreground">Selected technologies I leverage to solve complex problems.</p>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground"><AccentText text={content.arsenalHeading} accentClassName="text-accent" /></h2>
+            <p className="mt-2 text-muted-foreground">{content.arsenalDescription}</p>
           </div>
           <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
             <div className="rounded-lg border border-border/20 bg-surface p-8 shadow-soft md:col-span-2">
               <div className="mb-6 flex items-center gap-3">
                 <Blocks className="h-5 w-5 text-accent" />
-                <h3 className="text-xl font-bold tracking-tight">Languages</h3>
+                <h3 className="text-xl font-bold tracking-tight">{content.languagesTitle}</h3>
               </div>
               <div className="flex flex-wrap gap-3">
                 {["TypeScript", "Rust", "Go", "Python"].map((item, index) => (
@@ -112,7 +85,7 @@ export default async function AboutPage() {
             <div className="rounded-lg border border-border/20 bg-surface p-8 shadow-soft">
               <div className="mb-6 flex items-center gap-3">
                 <Layers3 className="h-5 w-5 text-accent" />
-                <h3 className="text-xl font-bold tracking-tight">Frameworks</h3>
+                <h3 className="text-xl font-bold tracking-tight">{content.frameworksTitle}</h3>
               </div>
               <div className="space-y-4">
                 <div>
@@ -138,9 +111,9 @@ export default async function AboutPage() {
             <div className="rounded-lg border border-border/20 bg-surface p-8 shadow-soft">
               <div className="mb-6 flex items-center gap-3">
                 <Cloud className="h-5 w-5 text-accent" />
-                <h3 className="text-xl font-bold tracking-tight">Infrastructure</h3>
+                <h3 className="text-xl font-bold tracking-tight">{content.infrastructureTitle}</h3>
               </div>
-              <p className="mb-4 text-sm text-muted-foreground">AWS, Terraform, Kubernetes, Docker</p>
+              <p className="mb-4 text-sm text-muted-foreground">{content.infrastructureSummary}</p>
               <div className="flex flex-wrap gap-2.5">
                 {['AWS', 'K8s', 'TF'].map((item) => (
                   <div key={item} className="flex min-w-[3rem] items-center justify-center rounded-full border border-border/25 bg-elevated px-3 py-2 text-[10px] font-bold tracking-[0.08em] text-foreground">
@@ -157,17 +130,17 @@ export default async function AboutPage() {
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
-              <h2 className="text-3xl font-bold tracking-tight text-foreground">Career Journey</h2>
-              <p className="mt-4 max-w-xs text-muted-foreground">A narrative of professional growth and technical leadership.</p>
+              <h2 className="text-3xl font-bold tracking-tight text-foreground"><AccentText text={content.careerHeading} accentClassName="text-accent" /></h2>
+              <p className="mt-4 max-w-xs text-muted-foreground">{content.careerDescription}</p>
             </div>
             <div className="space-y-16 lg:col-span-8">
-              {timeline.map((item, index) => (
+              {content.timeline.map((item, index) => (
                 <div key={item.title} className="relative pl-12">
-                  <div className={`absolute left-0 top-0 ${index === timeline.length - 1 ? "h-8" : "bottom-0"} w-[2px] bg-muted`} />
+                  <div className={`absolute left-0 top-0 ${index === content.timeline.length - 1 ? "h-8" : "bottom-0"} w-[2px] bg-muted`} />
                   <div className={`absolute left-[-5px] top-2 h-3 w-3 rounded-full ${item.active ? "bg-accent" : "bg-border"} ring-4 ring-surface`} />
                   <div className="mb-2">
                     <span className={`text-sm font-bold uppercase tracking-[0.16em] ${item.active ? "text-accent" : "text-muted-foreground"}`}>{item.years}</span>
-                    <h3 className="mt-1 text-2xl font-extrabold text-foreground">{item.title}</h3>
+                    <h3 className="mt-1 text-2xl font-extrabold text-foreground"><AccentText text={item.title} accentClassName="text-accent" /></h3>
                     <p className="text-lg font-medium text-muted-foreground">{item.company}</p>
                   </div>
                   <p className="mb-6 max-w-2xl leading-relaxed text-muted-foreground">{item.summary}</p>
@@ -190,11 +163,11 @@ export default async function AboutPage() {
       <Section className="pb-16 pt-4">
         <Container>
           <div className="rounded-lg border border-border/20 bg-accent-soft/20 p-12 text-center shadow-soft">
-            <h2 className="text-3xl font-extrabold text-foreground">Let&apos;s build something significant.</h2>
-            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">Currently open to technical advisory roles and collaborative architectural challenges.</p>
+            <h2 className="text-3xl font-extrabold text-foreground"><AccentText text={content.ctaHeading} accentClassName="text-accent" /></h2>
+            <p className="mx-auto mt-4 max-w-xl text-muted-foreground">{content.ctaDescription}</p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">
-              <ButtonLink href="/contact" className="px-8 py-4 font-bold">Get In Touch</ButtonLink>
-              <ButtonLink href="/projects" variant="secondary" className="px-8 py-4 font-bold">View Projects</ButtonLink>
+              <ButtonLink href="/contact" className="px-8 py-4 font-bold">{content.ctaPrimaryLabel}</ButtonLink>
+              <ButtonLink href="/projects" variant="secondary" className="px-8 py-4 font-bold">{content.ctaSecondaryLabel}</ButtonLink>
             </div>
           </div>
         </Container>

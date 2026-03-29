@@ -83,8 +83,25 @@ function createDocuments(data) {
     defaultSeoTitle: data.siteSettings.defaultSeoTitle,
     defaultSeoDescription: data.siteSettings.defaultSeoDescription,
     contactEmail: data.siteSettings.contactEmail,
+    availabilityLabel: data.siteSettings.availabilityLabel,
+    scrollLabel: data.siteSettings.scrollLabel,
     heroHeadline: data.siteSettings.heroHeadline,
     heroSupportingText: data.siteSettings.heroSupportingText,
+    selectedWorkHeading: data.siteSettings.selectedWorkHeading,
+    selectedWorkDescription: data.siteSettings.selectedWorkDescription,
+    selectedWorkCtaHeading: data.siteSettings.selectedWorkCtaHeading,
+    selectedWorkCtaDescription: data.siteSettings.selectedWorkCtaDescription,
+    selectedWorkMetricOneLabel: data.siteSettings.selectedWorkMetricOneLabel,
+    selectedWorkMetricTwoLabel: data.siteSettings.selectedWorkMetricTwoLabel,
+    toolsEyebrow: data.siteSettings.toolsEyebrow,
+    toolsHeading: data.siteSettings.toolsHeading,
+    toolsDescription: data.siteSettings.toolsDescription,
+    tools: data.siteSettings.tools.map((tool) => ({
+      _key: `${tool.label}-${tool.icon}`.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+      _type: "object",
+      label: tool.label,
+      icon: tool.icon
+    })),
     footerText: data.siteSettings.footerText,
     credibilityItems: data.siteSettings.credibilityItems,
     socialLinks: data.siteSettings.socialLinks.map((link) => ({
@@ -99,10 +116,36 @@ function createDocuments(data) {
   const aboutDoc = {
     _id: "aboutPage",
     _type: "aboutPage",
+    heading: data.aboutPage.heading,
+    introLabel: data.aboutPage.introLabel,
     intro: data.aboutPage.intro,
     story: data.aboutPage.story,
     principles: data.aboutPage.principles,
-    toolkit: data.aboutPage.toolkit
+    toolkit: data.aboutPage.toolkit,
+    spotlightTitle: data.aboutPage.spotlightTitle,
+    spotlightSubtitle: data.aboutPage.spotlightSubtitle,
+    arsenalHeading: data.aboutPage.arsenalHeading,
+    arsenalDescription: data.aboutPage.arsenalDescription,
+    languagesTitle: data.aboutPage.languagesTitle,
+    frameworksTitle: data.aboutPage.frameworksTitle,
+    infrastructureTitle: data.aboutPage.infrastructureTitle,
+    infrastructureSummary: data.aboutPage.infrastructureSummary,
+    careerHeading: data.aboutPage.careerHeading,
+    careerDescription: data.aboutPage.careerDescription,
+    ctaHeading: data.aboutPage.ctaHeading,
+    ctaDescription: data.aboutPage.ctaDescription,
+    ctaPrimaryLabel: data.aboutPage.ctaPrimaryLabel,
+    ctaSecondaryLabel: data.aboutPage.ctaSecondaryLabel,
+    timeline: data.aboutPage.timeline.map((item) => ({
+      _key: `${item.years}-${item.title}`.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+      _type: "object",
+      years: item.years,
+      title: item.title,
+      company: item.company,
+      summary: item.summary,
+      tags: item.tags,
+      active: Boolean(item.active)
+    }))
   };
 
   const contactDoc = {
@@ -110,12 +153,31 @@ function createDocuments(data) {
     _type: "contactPage",
     heading: data.contactPage.heading,
     supportingText: data.contactPage.supportingText,
+    eyebrowLabel: data.contactPage.eyebrowLabel,
+    panelHeading: data.contactPage.panelHeading,
+    panelBody: data.contactPage.panelBody,
+    bestForTitle: data.contactPage.bestForTitle,
+    bestForBody: data.contactPage.bestForBody,
+    responseTitle: data.contactPage.responseTitle,
+    responseBody: data.contactPage.responseBody,
+    nameLabel: data.contactPage.nameLabel,
+    emailLabel: data.contactPage.emailLabel,
+    messageLabel: data.contactPage.messageLabel,
+    submitLabel: data.contactPage.submitLabel,
     email: data.contactPage.email,
     linkedIn: data.contactPage.linkedIn,
     github: data.contactPage.github
   };
 
-  return [...techDocs, ...projectDocs, settingsDoc, aboutDoc, contactDoc];
+  const projectsPageDoc = {
+    _id: "projectsPage",
+    _type: "projectsPage",
+    heading: data.projectsPage.heading,
+    supportingText: data.projectsPage.supportingText,
+    badgeText: data.projectsPage.badgeText
+  };
+
+  return [...techDocs, ...projectDocs, settingsDoc, aboutDoc, contactDoc, projectsPageDoc];
 }
 
 const documents = createDocuments(seed);

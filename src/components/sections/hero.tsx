@@ -2,6 +2,7 @@
 
 import { ChevronDown } from "lucide-react";
 
+import { AccentText } from "@/components/ui/accent-text";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Reveal } from "@/components/ui/reveal";
@@ -18,8 +19,6 @@ export function Hero({ settings }: HeroProps) {
     target?.scrollIntoView({ behavior: "smooth", block: "start" });
   };
 
-  void settings;
-
   return (
     <Section className="relative flex min-h-[calc(100vh-4rem)] items-center overflow-hidden px-6 pb-18 pt-16 text-center sm:pt-20 lg:pt-22">
       <Container>
@@ -27,14 +26,14 @@ export function Hero({ settings }: HeroProps) {
         <div className="absolute bottom-20 right-[-10%] h-[40%] w-[40%] rounded-full bg-green/10 blur-[120px]" />
         <Reveal className="relative z-10 mx-auto max-w-5xl space-y-7">
           <span className="inline-block rounded-full bg-elevated px-4 py-1.5 text-sm font-medium text-muted-foreground shadow-soft">
-            Available for New Projects
+            {settings.availabilityLabel}
           </span>
           <div className="space-y-5">
             <h1 className="text-balance text-5xl font-extrabold tracking-[-0.05em] text-foreground sm:text-6xl lg:text-7xl lg:leading-[1.05]">
-              Crafting Digital Experiences with <span className="text-accent italic">Precision</span> and Care
+              <AccentText text={settings.heroHeadline} />
             </h1>
             <p className="mx-auto max-w-3xl text-[1.02rem] leading-8 text-muted-foreground sm:text-[1.12rem]">
-              A Full-Stack Developer and UI Architect specializing in high-performance web applications that merge technical rigor with human-centric design.
+              {settings.heroSupportingText}
             </p>
           </div>
           <div className="flex flex-col items-center justify-center gap-5 sm:flex-row">
@@ -52,7 +51,7 @@ export function Hero({ settings }: HeroProps) {
           className="scroll-pulse absolute bottom-10 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2 text-muted-foreground transition hover:text-foreground"
           aria-label="Scroll to curated artifacts"
         >
-          <span className="text-[10px] font-bold uppercase tracking-[0.3em]">Scroll</span>
+          <span className="text-[10px] font-bold uppercase tracking-[0.3em]">{settings.scrollLabel}</span>
           <ChevronDown className="h-4 w-4" />
         </button>
       </Container>

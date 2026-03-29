@@ -85,6 +85,18 @@ export const siteSettingsQuery = `*[_type == "siteSettings"][0]{
   siteTitle,
   defaultSeoTitle,
   defaultSeoDescription,
+  availabilityLabel,
+  scrollLabel,
+  selectedWorkHeading,
+  selectedWorkDescription,
+  selectedWorkCtaHeading,
+  selectedWorkCtaDescription,
+  selectedWorkMetricOneLabel,
+  selectedWorkMetricTwoLabel,
+  toolsEyebrow,
+  toolsHeading,
+  toolsDescription,
+  tools,
   socialLinks,
   contactEmail,
   heroHeadline,
@@ -94,16 +106,51 @@ export const siteSettingsQuery = `*[_type == "siteSettings"][0]{
 }`;
 
 export const aboutPageQuery = `*[_type == "aboutPage"][0]{
+  heading,
+  introLabel,
   intro,
   story,
   principles,
-  toolkit
+  toolkit,
+  portrait,
+  spotlightTitle,
+  spotlightSubtitle,
+  arsenalHeading,
+  arsenalDescription,
+  languagesTitle,
+  frameworksTitle,
+  infrastructureTitle,
+  infrastructureSummary,
+  careerHeading,
+  careerDescription,
+  timeline,
+  ctaHeading,
+  ctaDescription,
+  ctaPrimaryLabel,
+  ctaSecondaryLabel
 }`;
 
 export const contactPageQuery = `*[_type == "contactPage"][0]{
   heading,
   supportingText,
+  eyebrowLabel,
+  panelHeading,
+  panelBody,
+  bestForTitle,
+  bestForBody,
+  responseTitle,
+  responseBody,
+  nameLabel,
+  emailLabel,
+  messageLabel,
+  submitLabel,
   email,
   linkedIn,
   github
+}`;
+
+export const projectsPageQuery = `*[_type == "projectsPage"][0]{
+  heading,
+  supportingText,
+  badgeText
 }`;
