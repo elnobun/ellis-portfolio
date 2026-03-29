@@ -21,7 +21,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 pt-3">
       <Container className="py-2">
-        <div className="flex items-center justify-between gap-4 rounded-full border border-white/10 bg-background/92 px-4 py-3 shadow-[0_10px_28px_rgba(15,23,42,0.14)] backdrop-blur-[28px] dark:border-white/10 dark:bg-[rgba(19,23,28,0.88)]">
+        <div className="flex items-center justify-between gap-4 rounded-full bg-background/80 px-4 py-3 shadow-ambient backdrop-blur-[24px]">
           <Link href="/" className="flex items-center gap-3 text-sm font-semibold text-foreground">
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[linear-gradient(135deg,rgb(var(--accent)),rgb(var(--accent-soft)))] text-accent-foreground">
               <Code2 className="h-4 w-4" />
