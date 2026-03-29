@@ -25,7 +25,7 @@ export function ToolsOfTrade() {
             const Icon = tool.icon;
 
             return (
-              <div key={tool.label} className="flex flex-col items-center gap-3 text-muted-foreground opacity-70 transition hover:opacity-100">
+              <div key={tool.label} className="flex flex-col items-center gap-3 rounded-xl border border-border/10 px-4 py-5 text-muted-foreground opacity-70 transition hover:bg-surface hover:opacity-100">
                 <Icon className="h-8 w-8" />
                 <span className="text-sm font-medium">{tool.label}</span>
               </div>

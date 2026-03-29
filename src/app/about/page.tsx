@@ -47,15 +47,15 @@ export default async function AboutPage() {
 
   return (
     <>
-      <Section className="pb-24 pt-28">
+      <Section className="pb-18 pt-26">
         <Container>
-          <div className="grid grid-cols-1 items-start gap-12 lg:grid-cols-12">
+          <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-12">
             <div className="lg:col-span-7">
               <span className="inline-block rounded-lg bg-green/20 px-3 py-1 text-xs font-bold uppercase tracking-[0.14em] text-green">Introduction</span>
               <h1 className="mt-6 text-5xl font-extrabold tracking-[-0.05em] text-foreground lg:text-7xl lg:leading-[1.05]">
                 Engineering digital <span className="text-accent">artifacts</span> with human intent.
               </h1>
-              <div className="mt-8 max-w-2xl space-y-6 text-lg leading-relaxed text-muted-foreground">
+              <div className="mt-8 max-w-2xl space-y-5 text-[1.02rem] leading-8 text-muted-foreground">
                 <p>{content.intro}</p>
                 {content.story.slice(0, 2).map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
@@ -63,7 +63,7 @@ export default async function AboutPage() {
               </div>
             </div>
             <div className="group relative lg:col-span-5">
-              <div className="aspect-square overflow-hidden rounded-2xl bg-elevated shadow-soft transition duration-500 group-hover:-rotate-2">
+              <div className="aspect-square overflow-hidden rounded-lg border border-border/20 bg-elevated shadow-soft transition duration-500 group-hover:-translate-y-1">
                 <Image
                   src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80"
                   alt="Professional portrait"
@@ -72,7 +72,7 @@ export default async function AboutPage() {
                   className="h-full w-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -right-6 hidden rounded-2xl bg-surface p-6 shadow-ambient md:block">
+              <div className="absolute -bottom-6 -right-6 hidden rounded-lg border border-border/20 bg-surface p-6 shadow-ambient md:block">
                 <div className="flex items-center gap-4">
                   <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-accent">
                     <Code2 className="h-5 w-5" />
@@ -88,17 +88,17 @@ export default async function AboutPage() {
         </Container>
       </Section>
 
-      <Section className="bg-elevated py-24">
+      <Section className="bg-elevated py-18">
         <Container>
           <div className="mb-16">
             <h2 className="text-3xl font-bold tracking-tight text-foreground">Technical Arsenal</h2>
             <p className="mt-2 text-muted-foreground">Selected technologies I leverage to solve complex problems.</p>
           </div>
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 lg:grid-cols-4">
-            <div className="rounded-2xl bg-surface p-8 shadow-soft md:col-span-2">
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3 lg:grid-cols-4">
+            <div className="rounded-lg border border-border/20 bg-surface p-8 shadow-soft md:col-span-2">
               <div className="mb-6 flex items-center gap-3">
                 <Blocks className="h-5 w-5 text-accent" />
-                <h3 className="text-xl font-bold">Languages</h3>
+                <h3 className="text-xl font-bold tracking-tight">Languages</h3>
               </div>
               <div className="flex flex-wrap gap-3">
                 {["TypeScript", "Rust", "Go", "Python"].map((item, index) => (
@@ -109,10 +109,10 @@ export default async function AboutPage() {
                 ))}
               </div>
             </div>
-            <div className="rounded-2xl bg-surface p-8 shadow-soft">
+            <div className="rounded-lg border border-border/20 bg-surface p-8 shadow-soft">
               <div className="mb-6 flex items-center gap-3">
                 <Layers3 className="h-5 w-5 text-accent" />
-                <h3 className="text-xl font-bold">Frameworks</h3>
+                <h3 className="text-xl font-bold tracking-tight">Frameworks</h3>
               </div>
               <div className="space-y-4">
                 <div>
@@ -135,15 +135,15 @@ export default async function AboutPage() {
                 </div>
               </div>
             </div>
-            <div className="rounded-2xl bg-surface p-8 shadow-soft">
+            <div className="rounded-lg border border-border/20 bg-surface p-8 shadow-soft">
               <div className="mb-6 flex items-center gap-3">
                 <Cloud className="h-5 w-5 text-accent" />
-                <h3 className="text-xl font-bold">Infrastructure</h3>
+                <h3 className="text-xl font-bold tracking-tight">Infrastructure</h3>
               </div>
               <p className="mb-4 text-sm text-muted-foreground">AWS, Terraform, Kubernetes, Docker</p>
-              <div className="flex -space-x-2">
+              <div className="flex flex-wrap gap-2.5">
                 {['AWS', 'K8s', 'TF'].map((item) => (
-                  <div key={item} className="flex h-8 w-8 items-center justify-center rounded-full border-2 border-surface bg-elevated text-[10px] font-bold">
+                  <div key={item} className="flex min-w-[3rem] items-center justify-center rounded-full border border-border/25 bg-elevated px-3 py-2 text-[10px] font-bold tracking-[0.08em] text-foreground">
                     {item}
                   </div>
                 ))}
@@ -153,7 +153,7 @@ export default async function AboutPage() {
         </Container>
       </Section>
 
-      <Section className="py-24">
+      <Section className="py-18">
         <Container>
           <div className="grid grid-cols-1 gap-12 lg:grid-cols-12">
             <div className="lg:col-span-4">
@@ -187,9 +187,9 @@ export default async function AboutPage() {
         </Container>
       </Section>
 
-      <Section className="pb-20 pt-6">
+      <Section className="pb-16 pt-4">
         <Container>
-          <div className="rounded-[2rem] bg-accent-soft/20 p-12 text-center">
+          <div className="rounded-lg border border-border/20 bg-accent-soft/20 p-12 text-center shadow-soft">
             <h2 className="text-3xl font-extrabold text-foreground">Let&apos;s build something significant.</h2>
             <p className="mx-auto mt-4 max-w-xl text-muted-foreground">Currently open to technical advisory roles and collaborative architectural challenges.</p>
             <div className="mt-8 flex flex-wrap justify-center gap-4">

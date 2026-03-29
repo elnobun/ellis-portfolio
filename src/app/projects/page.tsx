@@ -23,7 +23,7 @@ export default async function ProjectsPage() {
             <h1 className="text-5xl font-extrabold tracking-[-0.05em] text-foreground sm:text-6xl">Engineered Artifacts</h1>
             <p className="text-xl leading-relaxed text-muted-foreground">A curated gallery of technical solutions, ranging from distributed systems to pixel-perfect front-end architectures. Each project represents a specific challenge overcome through precision and craft.</p>
           </div>
-          <div className="rounded-lg bg-elevated px-4 py-2 text-sm font-semibold text-muted-foreground">
+          <div className="rounded-full bg-elevated px-4 py-2 text-sm font-semibold text-muted-foreground shadow-soft">
             <span className="mr-2 inline-block h-2 w-2 rounded-full bg-green" />12 Active Lab Projects
           </div>
         </div>

@@ -19,21 +19,21 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-40 pt-4">
-      <Container className="py-2.5">
-        <div className="flex items-center justify-between gap-4 rounded-full bg-background/80 px-4 py-3 shadow-ambient backdrop-blur-[24px]">
+    <header className="sticky top-0 z-40 pt-3">
+      <Container className="py-2">
+        <div className="flex items-center justify-between gap-4 rounded-full border border-white/10 bg-background/92 px-4 py-3 shadow-[0_10px_28px_rgba(15,23,42,0.14)] backdrop-blur-[28px] dark:border-white/10 dark:bg-[rgba(19,23,28,0.88)]">
           <Link href="/" className="flex items-center gap-3 text-sm font-semibold text-foreground">
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[linear-gradient(135deg,rgb(var(--accent)),rgb(var(--accent-soft)))] text-accent-foreground">
               <Code2 className="h-4 w-4" />
             </span>
             <span className="hidden sm:block">Ellis Enobun</span>
           </Link>
-          <nav aria-label="Primary" className="hidden items-center gap-6 md:flex">
+          <nav aria-label="Primary" className="hidden items-center gap-7 md:flex">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
-                className={`border-b-2 pb-1 text-sm font-medium transition ${pathname === item.href ? "border-accent text-accent" : "border-transparent text-muted-foreground hover:text-foreground"}`}
+              className={`border-b-2 pb-1 text-sm font-medium transition ${pathname === item.href ? "border-accent text-accent" : "border-transparent text-muted-foreground hover:text-foreground"}`}
               >
                 {item.label}
               </Link>
@@ -42,7 +42,7 @@ export function Header() {
           <div className="flex items-center gap-3">
             <Link
               href="mailto:hello@ellis.dev"
-              className="hidden items-center gap-2 rounded-full bg-muted px-4 py-2 text-sm font-semibold text-foreground transition hover:bg-elevated sm:inline-flex"
+              className="hidden items-center gap-2 rounded-full bg-surface px-4 py-2 text-sm font-semibold text-foreground transition hover:bg-elevated sm:inline-flex"
             >
               Start a conversation
               <ArrowUpRight className="h-4 w-4" />
@@ -50,7 +50,7 @@ export function Header() {
             <ThemeToggle />
           </div>
         </div>
-        <nav aria-label="Mobile primary" className="mt-3 flex gap-2 overflow-x-auto pb-1 md:hidden">
+        <nav aria-label="Mobile primary" className="mt-2.5 flex gap-2 overflow-x-auto pb-1 md:hidden">
           {navItems.map((item) => (
             <Link
               key={item.href}
