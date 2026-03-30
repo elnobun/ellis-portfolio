@@ -1,3 +1,5 @@
+import { unstable_noStore as noStore } from "next/cache";
+
 import { aboutContent, contactContent, projects, projectsPageContent, siteSettings } from "@/lib/data/site-content";
 import { sanityClient, sanityEnabled } from "@/lib/sanity/client";
 import { mapAboutContent, mapContactContent, mapProject, mapProjectsPageContent, mapSiteSettings } from "@/lib/sanity/mappers";
@@ -13,6 +15,8 @@ import {
 import type { AboutContent, ContactContent, Project, ProjectsPageContent, SiteSettings } from "@/types";
 
 export async function getSiteSettings(): Promise<SiteSettings> {
+  noStore();
+
   if (sanityEnabled && sanityClient) {
     const data = await sanityClient.fetch<Record<string, unknown> | null>(siteSettingsQuery);
     if (data) {
@@ -51,6 +55,8 @@ export async function getSiteSettings(): Promise<SiteSettings> {
 }
 
 export async function getAboutContent(): Promise<AboutContent> {
+  noStore();
+
   if (sanityEnabled && sanityClient) {
     const data = await sanityClient.fetch<Record<string, unknown> | null>(aboutPageQuery);
     if (data) {
@@ -91,6 +97,8 @@ export async function getAboutContent(): Promise<AboutContent> {
 }
 
 export async function getContactContent(): Promise<ContactContent> {
+  noStore();
+
   if (sanityEnabled && sanityClient) {
     const data = await sanityClient.fetch<Record<string, unknown> | null>(contactPageQuery);
     if (data) {
@@ -122,6 +130,8 @@ export async function getContactContent(): Promise<ContactContent> {
 }
 
 export async function getFeaturedProjects(): Promise<Project[]> {
+  noStore();
+
   if (!sanityEnabled || !sanityClient) {
     return projects.filter((project) => project.featured).sort((a, b) => a.sortOrder - b.sortOrder);
   }
@@ -131,6 +141,8 @@ export async function getFeaturedProjects(): Promise<Project[]> {
 }
 
 export async function getProjects(): Promise<Project[]> {
+  noStore();
+
   if (!sanityEnabled || !sanityClient) {
     return [...projects].sort((a, b) => a.sortOrder - b.sortOrder);
   }
@@ -140,6 +152,8 @@ export async function getProjects(): Promise<Project[]> {
 }
 
 export async function getProjectsPageContent(): Promise<ProjectsPageContent> {
+  noStore();
+
   if (sanityEnabled && sanityClient) {
     const data = await sanityClient.fetch<Record<string, unknown> | null>(projectsPageQuery);
     if (data) {
@@ -157,6 +171,8 @@ export async function getProjectsPageContent(): Promise<ProjectsPageContent> {
 }
 
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
+  noStore();
+
   if (!sanityEnabled || !sanityClient) {
     return projects.find((project) => project.slug === slug) || null;
   }

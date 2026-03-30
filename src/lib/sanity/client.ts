@@ -5,10 +5,10 @@ import { sanityApiVersion, sanityDataset, sanityProjectId } from "@/lib/sanity/c
 export const sanityEnabled = Boolean(sanityProjectId);
 
 export const sanityClient = sanityEnabled
-  ? createClient({
-      projectId: sanityProjectId,
-      dataset: sanityDataset,
-      apiVersion: sanityApiVersion,
-      useCdn: true
-    })
+    ? createClient({
+        projectId: sanityProjectId,
+        dataset: sanityDataset,
+        apiVersion: sanityApiVersion,
+        useCdn: false
+      })
   : null;
