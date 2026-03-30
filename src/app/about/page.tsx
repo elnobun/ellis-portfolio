@@ -74,7 +74,7 @@ export default async function AboutPage() {
                 <h3 className="text-xl font-bold tracking-tight">{content.languagesTitle}</h3>
               </div>
               <div className="flex flex-wrap gap-3">
-                {["TypeScript", "Rust", "Go", "Python"].map((item, index) => (
+                {content.languages.map((item, index) => (
                   <span key={item} className="inline-flex items-center gap-2 rounded-lg bg-elevated px-4 py-2 text-sm font-semibold">
                     <span className={`h-2 w-2 rounded-full ${index === 3 ? "bg-accent-soft" : "bg-green"}`} />
                     {item}
@@ -88,24 +88,17 @@ export default async function AboutPage() {
                 <h3 className="text-xl font-bold tracking-tight">{content.frameworksTitle}</h3>
               </div>
               <div className="space-y-4">
-                <div>
-                  <div className="mb-2 flex items-center justify-between text-sm">
-                    <span className="font-medium">React / Next.js</span>
-                    <span className="text-xs text-muted-foreground">Expert</span>
+                {content.frameworks.map((item) => (
+                  <div key={item.label}>
+                    <div className="mb-2 flex items-center justify-between text-sm">
+                      <span className="font-medium">{item.label}</span>
+                      <span className="text-xs text-muted-foreground">{item.level}</span>
+                    </div>
+                    <div className="h-1.5 overflow-hidden rounded-full bg-elevated">
+                      <div className="h-full bg-accent" style={{ width: `${item.progress}%` }} />
+                    </div>
                   </div>
-                  <div className="h-1.5 overflow-hidden rounded-full bg-elevated">
-                    <div className="h-full w-[95%] bg-accent" />
-                  </div>
-                </div>
-                <div>
-                  <div className="mb-2 flex items-center justify-between text-sm">
-                    <span className="font-medium">Node.js</span>
-                    <span className="text-xs text-muted-foreground">Senior</span>
-                  </div>
-                  <div className="h-1.5 overflow-hidden rounded-full bg-elevated">
-                    <div className="h-full w-[88%] bg-accent" />
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
             <div className="rounded-lg border border-border/20 bg-surface p-8 shadow-soft">
@@ -115,7 +108,7 @@ export default async function AboutPage() {
               </div>
               <p className="mb-4 text-sm text-muted-foreground">{content.infrastructureSummary}</p>
               <div className="flex flex-wrap gap-2.5">
-                {['AWS', 'K8s', 'TF'].map((item) => (
+                {content.infrastructureItems.map((item) => (
                   <div key={item} className="flex min-w-[3rem] items-center justify-center rounded-full border border-border/25 bg-elevated px-3 py-2 text-[10px] font-bold tracking-[0.08em] text-foreground">
                     {item}
                   </div>

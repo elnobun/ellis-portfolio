@@ -1,7 +1,7 @@
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 import { urlFor } from "@/lib/sanity/image";
-import type { AboutContent, ContactContent, LinkItem, Metric, Project, ProjectsPageContent, SiteSettings, TimelineItem, ToolItem } from "@/types";
+import type { AboutContent, ContactContent, FrameworkItem, LinkItem, Metric, Project, ProjectsPageContent, SiteSettings, TimelineItem, ToolItem } from "@/types";
 
 function mapStringArray(value: unknown): string[] {
   return Array.isArray(value) ? value.map(String).filter(Boolean) : [];
@@ -124,6 +124,18 @@ function mapTimeline(value: unknown): TimelineItem[] {
   }));
 }
 
+function mapFrameworks(value: unknown): FrameworkItem[] {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+
+  return value.map((item) => ({
+    label: String((item as { label?: string }).label || ""),
+    level: String((item as { level?: string }).level || ""),
+    progress: Number((item as { progress?: number }).progress || 0)
+  })).filter((item) => item.label);
+}
+
 export function mapSiteSettings(record: Record<string, unknown>): SiteSettings {
   return {
     siteTitle: String(record.siteTitle || "Ellis Portfolio"),
@@ -169,9 +181,12 @@ export function mapAboutContent(record: Record<string, unknown>): AboutContent {
     arsenalHeading: String(record.arsenalHeading || ""),
     arsenalDescription: String(record.arsenalDescription || ""),
     languagesTitle: String(record.languagesTitle || ""),
+    languages: mapStringArray(record.languages),
     frameworksTitle: String(record.frameworksTitle || ""),
+    frameworks: mapFrameworks(record.frameworks),
     infrastructureTitle: String(record.infrastructureTitle || ""),
     infrastructureSummary: String(record.infrastructureSummary || ""),
+    infrastructureItems: mapStringArray(record.infrastructureItems),
     careerHeading: String(record.careerHeading || ""),
     careerDescription: String(record.careerDescription || ""),
     timeline: mapTimeline(record.timeline),

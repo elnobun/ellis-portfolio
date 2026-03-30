@@ -10,7 +10,11 @@ function normalizeAccentMarkup(text: string) {
     .replace(/&lt;accent&gt;/gi, "<accent>")
     .replace(/&lt;\/accent&gt;/gi, "</accent>")
     .replace(/\u003caccent\u003e/gi, "<accent>")
-    .replace(/\u003c\/accent\u003e/gi, "</accent>");
+    .replace(/\u003c\/accent\u003e/gi, "</accent>")
+    .replace(/&apos;/gi, "'")
+    .replace(/&#39;/gi, "'")
+    .replace(/&quot;/gi, '"')
+    .replace(/&amp;/gi, "&");
 }
 
 export function stripAccentMarkup(text: string) {

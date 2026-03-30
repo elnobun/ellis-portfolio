@@ -62,9 +62,15 @@ export const aboutContent: AboutContent = {
   arsenalHeading: "Technical Arsenal",
   arsenalDescription: "Selected technologies I leverage to solve complex problems.",
   languagesTitle: "Languages",
+  languages: ["TypeScript", "Rust", "Go", "Python"],
   frameworksTitle: "Frameworks",
+  frameworks: [
+    { label: "React / Next.js", level: "Expert", progress: 95 },
+    { label: "Node.js", level: "Senior", progress: 88 }
+  ],
   infrastructureTitle: "Infrastructure",
   infrastructureSummary: "AWS, Terraform, Kubernetes, Docker",
+  infrastructureItems: ["AWS", "K8s", "TF"],
   careerHeading: "Career Journey",
   careerDescription: "A narrative of professional growth and technical leadership.",
   timeline: [

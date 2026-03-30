@@ -22,6 +22,12 @@ export type TimelineItem = {
   active?: boolean;
 };
 
+export type FrameworkItem = {
+  label: string;
+  level: string;
+  progress: number;
+};
+
 export type Metric = {
   label: string;
   value: string;
@@ -93,9 +99,12 @@ export type AboutContent = {
   arsenalHeading: string;
   arsenalDescription: string;
   languagesTitle: string;
+  languages: string[];
   frameworksTitle: string;
+  frameworks: FrameworkItem[];
   infrastructureTitle: string;
   infrastructureSummary: string;
+  infrastructureItems: string[];
   careerHeading: string;
   careerDescription: string;
   timeline: TimelineItem[];

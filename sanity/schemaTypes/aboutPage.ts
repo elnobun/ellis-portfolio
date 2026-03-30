@@ -27,9 +27,26 @@ export const aboutPageType = defineType({
     }),
     defineField({ name: "arsenalDescription", title: "Arsenal description", type: "text" }),
     defineField({ name: "languagesTitle", title: "Languages title", type: "string" }),
+    defineField({ name: "languages", title: "Languages", type: "array", of: [defineArrayMember({ type: "string" })] }),
     defineField({ name: "frameworksTitle", title: "Frameworks title", type: "string" }),
+    defineField({
+      name: "frameworks",
+      title: "Frameworks",
+      type: "array",
+      of: [
+        defineArrayMember({
+          type: "object",
+          fields: [
+            defineField({ name: "label", title: "Label", type: "string" }),
+            defineField({ name: "level", title: "Level", type: "string" }),
+            defineField({ name: "progress", title: "Progress", type: "number" })
+          ]
+        })
+      ]
+    }),
     defineField({ name: "infrastructureTitle", title: "Infrastructure title", type: "string" }),
     defineField({ name: "infrastructureSummary", title: "Infrastructure summary", type: "string" }),
+    defineField({ name: "infrastructureItems", title: "Infrastructure items", type: "array", of: [defineArrayMember({ type: "string" })] }),
     defineField({
       name: "careerHeading",
       title: "Career heading",

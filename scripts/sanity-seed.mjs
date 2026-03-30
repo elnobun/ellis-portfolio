@@ -127,9 +127,18 @@ function createDocuments(data) {
     arsenalHeading: data.aboutPage.arsenalHeading,
     arsenalDescription: data.aboutPage.arsenalDescription,
     languagesTitle: data.aboutPage.languagesTitle,
+    languages: data.aboutPage.languages,
     frameworksTitle: data.aboutPage.frameworksTitle,
+    frameworks: data.aboutPage.frameworks.map((item) => ({
+      _key: `${item.label}-${item.level}`.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+      _type: "object",
+      label: item.label,
+      level: item.level,
+      progress: item.progress
+    })),
     infrastructureTitle: data.aboutPage.infrastructureTitle,
     infrastructureSummary: data.aboutPage.infrastructureSummary,
+    infrastructureItems: data.aboutPage.infrastructureItems,
     careerHeading: data.aboutPage.careerHeading,
     careerDescription: data.aboutPage.careerDescription,
     ctaHeading: data.aboutPage.ctaHeading,
