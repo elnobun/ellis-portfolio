@@ -4,6 +4,8 @@ import { SelectedWork } from "@/components/sections/selected-work";
 import { ToolsOfTrade } from "@/components/sections/tools-of-trade";
 import { getFeaturedProjects, getSiteSettings } from "@/lib/sanity/api";
 
+export const revalidate = 60;
+
 export default async function HomePage() {
   const [settings, featuredProjects] = await Promise.all([getSiteSettings(), getFeaturedProjects()]);
 

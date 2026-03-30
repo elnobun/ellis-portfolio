@@ -23,6 +23,8 @@ export const metadata: Metadata = buildMetadata({
     "A modern portfolio and case-study platform for a front-end engineer focused on careful UI, strong systems, and measurable product outcomes."
 });
 
+export const revalidate = 60;
+
 export default async function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   const settings = await getSiteSettings();
 

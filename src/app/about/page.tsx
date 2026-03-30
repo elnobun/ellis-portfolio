@@ -15,6 +15,8 @@ export const metadata: Metadata = buildMetadata({
   path: "/about"
 });
 
+export const revalidate = 60;
+
 export default async function AboutPage() {
   const content = await getAboutContent();
 

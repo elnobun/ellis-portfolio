@@ -13,6 +13,8 @@ export const metadata: Metadata = buildMetadata({
   path: "/projects"
 });
 
+export const revalidate = 60;
+
 export default async function ProjectsPage() {
   const [projects, content] = await Promise.all([getProjects(), getProjectsPageContent()]);
 
