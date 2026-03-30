@@ -5,19 +5,28 @@ type AccentTextProps = {
   accentClassName?: string;
 };
 
+function normalizeAccentMarkup(text: string) {
+  return text
+    .replace(/&lt;accent&gt;/gi, "<accent>")
+    .replace(/&lt;\/accent&gt;/gi, "</accent>")
+    .replace(/\u003caccent\u003e/gi, "<accent>")
+    .replace(/\u003c\/accent\u003e/gi, "</accent>");
+}
+
 export function stripAccentMarkup(text: string) {
-  return text.replace(/<accent>(.*?)<\/accent>/g, "$1");
+  return normalizeAccentMarkup(text).replace(/<accent>(.*?)<\/accent>/g, "$1");
 }
 
 export function AccentText({ text, accentClassName = "text-accent italic" }: AccentTextProps) {
+  const normalizedText = normalizeAccentMarkup(text);
   const parts: ReactNode[] = [];
   const regex = /<accent>(.*?)<\/accent>/g;
   let lastIndex = 0;
   let match: RegExpExecArray | null;
 
-  while ((match = regex.exec(text)) !== null) {
+  while ((match = regex.exec(normalizedText)) !== null) {
     if (match.index > lastIndex) {
-      parts.push(text.slice(lastIndex, match.index));
+      parts.push(normalizedText.slice(lastIndex, match.index));
     }
 
     parts.push(
@@ -29,9 +38,9 @@ export function AccentText({ text, accentClassName = "text-accent italic" }: Acc
     lastIndex = regex.lastIndex;
   }
 
-  if (lastIndex < text.length) {
-    parts.push(text.slice(lastIndex));
+  if (lastIndex < normalizedText.length) {
+    parts.push(normalizedText.slice(lastIndex));
   }
 
-  return <>{parts.length ? parts : text}</>;
+  return <>{parts.length ? parts : normalizedText}</>;
 }
